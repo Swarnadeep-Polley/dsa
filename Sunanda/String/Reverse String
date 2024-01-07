@@ -1,1 +1,15 @@
+import java.util.*;
 
+public class Main
+{
+	public static void main(String[] args) {
+		String str="hello";
+		String ans="";
+		int l = str.length();
+		for(int i=l-1;i>=0;i--)
+		{
+		    ans = ans + str.charAt(i);
+		}
+		System.out.println("Reversed String : "+ans);
+	}
+}
