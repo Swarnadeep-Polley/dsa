@@ -9,8 +9,6 @@ import java.util.*;
 
 public class Main {
 
-    public static class Solution {
-
         public static int findDuplicate(ArrayList<Integer> arr) {
            /*
            int ans = 0;
@@ -54,7 +52,6 @@ public class Main {
             if(arr.get(i).equals(arr.get(i+1))){
                 return arr.get(i);
             }
-        }
 		
 		return -1;
         }
