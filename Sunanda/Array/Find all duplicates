@@ -1,0 +1,57 @@
+/*
+Given an integer array nums of length n where all the integers of nums are in the range [1, n] and each integer appears once or twice, return an array of all the integers that appears twice.
+You must write an algorithm that runs in O(n) time and uses only constant extra space.
+Example 1:
+  Input: nums = [4,3,2,7,8,2,3,1]
+  Output: [2,3]
+Example 2:
+  Input: nums = [1,1,2]
+  Output: [1]
+*/
+
+
+/*
+You are given an array ‘ARR’ of size ‘N’ containing each number between 1 and ‘N’ - 1 at least once. There is a single integer value that is present in the array twice. Your task is to find the duplicate integer value present in the array.
+For example:
+Consider ARR = [1, 2, 3, 4, 4], the duplicate integer value present in the array is 4. Hence, the answer is 4 in this case.
+*/
+
+
+import java.util.*;
+
+public class Main {
+
+    public static List<Integer> findDuplicates(int[] nums) {
+
+        List<Integer> b = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length-1; i++) {
+           if(nums[i]==nums[i+1])
+           {
+               b.add(nums[i]);
+           }
+        }
+        return b;
+        
+        /*
+        HashSet hs = new HashSet();
+        ArrayList<Integer> al = new ArrayList<>();
+
+        for(int num: nums)
+        {
+            if(!hs.add(num))
+            {
+                al.add(num);
+            }
+        }
+        return al;
+        */
+    }
+
+    public static void main(String[] args) {
+        int arr[]={2,3,4,4,5,6,2};
+
+        System.out.println("Output : " + findDuplicates(arr));
+    }
+}
+
