@@ -22,7 +22,7 @@ import java.util.*;
 public class Main {
 
     public static List<Integer> findDuplicates(int[] nums) {
-
+        /*
         List<Integer> b = new ArrayList<>();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length-1; i++) {
@@ -32,6 +32,20 @@ public class Main {
            }
         }
         return b;
+        */
+        
+        
+        List<Integer> ans = new ArrayList<>();
+        int n = nums.length;
+        if(n <= 1) return ans;
+
+        boolean[] vis = new  boolean[(int)Math.pow(10, 5)];
+        
+        for(int num : nums){
+            if(vis[num]) ans.add(num);
+            else vis[num] = true;
+        }
+        return ans;
         
         /*
         HashSet hs = new HashSet();
@@ -54,4 +68,3 @@ public class Main {
         System.out.println("Output : " + findDuplicates(arr));
     }
 }
-
