@@ -1,0 +1,49 @@
+Link :- https://leetcode.com/problems/next-permutation/description/
+
+// The next permutation of an array of integers is the next lexicographically greater permutation of its integer
+
+// Approach 1
+
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int ind1=-1,ind2=-1;
+        for(int i=nums.length-2;i>=0;i--)
+        {
+            if(nums[i]<nums[i+1])
+            {
+                ind1=i;
+                break;
+            }
+        }
+        if(ind1==-1)
+        reverse(nums,0,nums.length-1);
+        else
+        {
+            for(int i=nums.length-1;i>=0;i--)
+            {
+                if(nums[i]>nums[ind1])
+                {
+                    ind2=i;
+                    break;
+                }
+            }
+        swap(nums,ind1,ind2);
+        reverse(nums,ind1+1,nums.length-1);
+        }
+    }
+    public void swap(int[] nums,int i,int j)
+    {
+        nums[i] ^= nums[j];
+        nums[j] ^= nums[i];
+        nums[i] ^= nums[j];
+    }
+    public void reverse(int[] nums,int i,int j)
+    {
+        while(i<j)
+        {
+            swap(nums,i,j);
+            i++;
+            j--;
+        }
+    }
+}
