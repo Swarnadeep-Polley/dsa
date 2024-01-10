@@ -1,0 +1,39 @@
+Link :- https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1
+
+// Find the "Kth" max and min element of an array 
+
+// Approach 1
+class Solution{
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        //Your code here
+        Arrays.sort(arr);
+        return arr[k-1];
+    } 
+    public static int kthLargest(int[] arr, int l, int r, int k) 
+    { 
+        //Your code here
+        Arrays.sort(arr);
+        return arr[r-k+1];
+    }
+}
+
+// Approach 2 ( Time Limit Exceeding )
+class Solution{
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        //Your code here
+       int count = r - k + 1,i;
+        for(i=l;i<=r;i++)
+        {
+            int bul = 0;
+            for(int j=l;j<=r;j++)
+            {
+                if(i==j) continue;
+                if(arr[i]<=arr[j]) bul++;
+            }
+            if(count == bul) break;
+        }
+        return arr[i];
+    } 
+}
