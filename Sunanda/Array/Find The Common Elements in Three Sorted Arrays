@@ -64,3 +64,61 @@ public class Main
 	}
 }
 
+
+//Approach 2 (Using HashMap)
+import java.util.*;
+public class Main
+{
+    public static ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        ArrayList<Integer> al = new ArrayList<>();
+        
+        HashMap<Integer,Integer> h1 = new HashMap<>();
+        HashMap<Integer,Integer> h2 = new HashMap<>();
+        HashMap<Integer,Integer> h3 = new HashMap<>();
+        
+        for(int i=0;i<n1;i++)
+        {
+            h1.put(A[i],h1.getOrDefault(A[i],0)+1);
+        }
+        
+        for(int i=0;i<n2;i++)
+        {
+            h2.put(B[i],h2.getOrDefault(B[i],0)+1);
+        }
+        
+        for(int i=0;i<n3;i++)
+        {
+            h3.put(C[i],h3.getOrDefault(C[i],0)+1);
+        }
+        
+        int i=0;
+        while(i<n1)
+        {
+            if(h2.containsKey(A[i]) && h3.containsKey(A[i]))
+            {
+                al.add(A[i]);
+                h1.remove(A[i]);
+                h2.remove(A[i]);
+                h3.remove(A[i]);
+            }
+            i++;
+        }
+        
+        return al;
+    }
+	public static void main(String[] args) 
+	{
+	    int A[]={3,3,3}, B[]={3,3,3}, C[]={3,3,3};
+	    
+	    ArrayList<Integer> ans = commonElements(A,B,C,A.length,B.length,C.length);
+	    
+	    for(int x:ans)
+	    {
+	        System.out.println(ans);
+	    }
+	    
+	}
+}
+
+
