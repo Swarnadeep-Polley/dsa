@@ -17,10 +17,13 @@ Example 3:
 
 
 
+
+
 public class Main
 {
     public static int pivotIndex(int[] nums) 
     {
+        /*
         int total_sum = 0, left_sum = 0;
 
         for(int x:nums)
@@ -37,6 +40,51 @@ public class Main
             left_sum += nums[i];
         }
         return -1;
+        */
+        
+        /*
+        int sum=0;
+
+        for(int i=0;i<nums.length;i++)
+        {
+            sum+=nums[i];
+        }
+
+        int leftSum=0;
+        int rightSum=sum;
+        for(int i=0;i<nums.length;i++)
+        {
+            rightSum-=nums[i];
+            if(rightSum==leftSum)
+            {
+                return i;
+            }
+            leftSum+=nums[i]; 
+        }
+        return -1;
+        */
+        
+        int n=nums.length;
+        int suff[]=new int[n];
+        int pref[]=new int[n];
+        pref[0]=nums[0];
+        suff[n-1]=nums[n-1];
+        int k=0;
+        for(int i=1;i<n;i++)
+        {
+            k=n-i-1;
+            pref[i]=pref[i-1]+nums[i];
+            suff[k]=suff[k+1]+nums[k];
+        }
+        for(int x=0;x<nums.length;x++)
+        {
+            if(suff[x]==pref[x])
+            {
+                return x;
+            }
+        }
+        return -1;
+        
     }
 	public static void main(String[] args) 
 	{
@@ -44,3 +92,4 @@ public class Main
 		System.out.println("The pivot index is : "+pivotIndex(arr));
 	}
 }
+
